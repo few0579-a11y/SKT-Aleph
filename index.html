@@ -251,19 +251,20 @@ footer {
       </div>
       <div class="card-grid">
         <article class="info-card">
-          <div class="icon">01</div>
-          <h3>배우는 사람</h3>
-          <p>모르는 것이 생기면 처음부터 다시 해보면서 이해하려고 합니다.</p>
+          <div class="icon">PAST</div>
+          <h3>방송 디자인</h3>
+          <p>방송에서 내보내는 디자인 제작에 실무 경험을 키웠습니다.</p>
         </article>
         <article class="info-card">
-          <div class="icon">02</div>
-          <h3>관심 분야</h3>
-          <p>웹 개발과 네트워크, 보안에 관심을 가지고 있습니다.</p>
+          <div class="icon">NOW</div>
+          <h3>보안 분야 공부</h3>
+          <p>일본 워홀을 다녀오며 IT분야의 관심을 가졌습니다.<br>
+웹 개발을 공부해보며 IT의 보안 분야에도 도전하기 위해 SKT ALEPH 수료를 목표로 하고 있습니다.</p>
         </article>
         <article class="info-card">
-          <div class="icon">03</div>
-          <h3>나의 방식</h3>
-          <p>한 번에 완벽하게 하기보다 직접 만들고, 확인하고, 다시 고치는 방식을 좋아합니다.</p>
+          <div class="icon">GOAL</div>
+          <h3>일본 IT 분야에 도전하기</h3>
+          <p>기술과 일본어 실력을 함께 키워 일본 IT 분야에서 일할 수 있는 기반을 만들고 싶습니다.</p>
         </article>
       </div>
     </section>
@@ -290,6 +291,7 @@ footer {
             <p>일본 워홀을 다녀오며 IT분야의 관심을 가졌습니다.<br>
 웹 개발을 공부해보며 IT의 보안 분야에도 도전하기 위해 SKT ALEPH 수료를 목표로 하고 있습니다.</p> 
           </div>
+
         </div>
         <div class="timeline-item">
           <div class="dot"></div>
@@ -302,7 +304,7 @@ footer {
       </div>
     </section>
 
-   // <section id="goal" class="section goal-section">
+   <section id="goal" class="section goal-section">
       <div class="goal-card">
         <p class="eyebrow">MY NEXT STEP</p>
         <h2>배운 것을<br>직접 결과물로 만들기</h2>
@@ -310,14 +312,14 @@ footer {
           아직 모든 것을 아는 단계는 아니지만, 모르는 것을 하나씩 배우고
           작은 결과물로 만들어 보는 과정을 쌓아가고 있습니다.
         </p>
-        <button id="messageButton" class="button secondary" type="button">응원 메시지 보기</button>
-        <p id="message" class="hidden-message" role="status" aria-live="polite">천천히 하나씩 해도 충분합니다. ✨</p>
+        <button id="messageButton" class="button secondary" type="button">이메일 보기</button>
+        <p id="message" class="hidden-message" role="status" aria-live="polite">yoo6038a@naver.com</p>
       </div>
-    </section> //
+    </section>
   </main>
 
   <footer>
-    <p>© 2026 email: yoo6038@naver.com</p>
+    <p>© 2026 유지민 · Personal One-Page</p>
   </footer>
 
   <script>
@@ -326,7 +328,7 @@ const message = document.getElementById('message');
 
 button.addEventListener('click', () => {
   message.classList.toggle('show');
-  button.textContent = message.classList.contains('show') ? '메시지 숨기기' : '응원 메시지 보기';
+  button.textContent = message.classList.contains('show') ? '메시지 숨기기' : '이메일 보기';
 });
 
   </script>
