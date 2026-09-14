@@ -448,7 +448,84 @@ footer {
     border-radius: 24px;
   }
 }
-  </style>
+
+/* 이미지 크게 보기 모달 */
+.image-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.image-modal.show {
+  display: flex;
+}
+
+/* 큰 이미지 */
+.image-modal img {
+  max-width: 85vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* 모달 이전/다음 버튼 */
+.modal-slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #171717;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.modal-slider-button:hover,
+.modal-slider-button:focus-visible {
+  background: var(--accent-light);
+}
+
+.modal-prev {
+  left: 20vw;
+}
+
+.modal-next {
+  right: 20vw;
+}
+
+/* 닫기 버튼 */
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #171717;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 102;
+}
+
+.modal-close:hover,
+.modal-close:focus-visible {
+  background: var(--accent-light);
+}  </style>
 </head>
 
 <body>
@@ -749,8 +826,52 @@ footer {
       </div>
 
     </section>
+    <!-- 이미지 크게 보기 -->
+   <!-- 이미지 크게 보기 -->
+<div
+  id="imageModal"
+  class="image-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-label="근거 이미지 크게 보기">
 
+  <!-- 이전 이미지 -->
+  <button
+    id="modalPrev"
+    class="modal-slider-button modal-prev"
+    type="button"
+    aria-label="이전 이미지">
+    ‹
+  </button>
+
+  <!-- 큰 이미지 -->
+  <img
+    id="modalImage"
+    src=""
+    alt="">
+
+  <!-- 다음 이미지 -->
+  <button
+    id="modalNext"
+    class="modal-slider-button modal-next"
+    type="button"
+    aria-label="다음 이미지">
+    ›
+  </button>
+
+  <!-- 닫기 -->
+  <button
+    id="modalClose"
+    class="modal-close"
+    type="button"
+    aria-label="이미지 닫기">
+    ×
+  </button>
+
+</div>
   </main>
+
+
 
 
   <footer>
@@ -792,7 +913,101 @@ prevButton.addEventListener('click', () => {
   currentSlide = (currentSlide - 1 + slideCount) % slideCount;
   updateSlider();
 });
-  </script>
+// 이미지 크게 보기 모달
+const evidenceImages = document.querySelectorAll('.evidence-image img');
+
+const imageModal = document.getElementById('imageModal');
+const modalImage = document.getElementById('modalImage');
+
+const modalClose = document.getElementById('modalClose');
+const modalPrev = document.getElementById('modalPrev');
+const modalNext = document.getElementById('modalNext');
+
+let modalSlide = 0;
+
+
+// 이미지 클릭
+evidenceImages.forEach((image, index) => {
+
+  image.addEventListener('click', () => {
+
+    // 클릭한 이미지 번호 저장
+    modalSlide = index;
+
+    // 이미지 표시
+    updateModalImage();
+
+    // 모달 열기
+    imageModal.classList.add('show');
+  });
+
+});
+
+
+// 큰 이미지 변경
+function updateModalImage() {
+
+  const image = evidenceImages[modalSlide];
+
+  modalImage.src = image.src;
+  modalImage.alt = image.alt;
+}
+
+
+// 이전 이미지
+modalPrev.addEventListener('click', () => {
+
+  modalSlide =
+    (modalSlide - 1 + evidenceImages.length)
+    % evidenceImages.length;
+
+  updateModalImage();
+
+});
+
+
+// 다음 이미지
+modalNext.addEventListener('click', () => {
+
+  modalSlide =
+    (modalSlide + 1)
+    % evidenceImages.length;
+
+  updateModalImage();
+
+});
+
+
+// 닫기 버튼
+modalClose.addEventListener('click', () => {
+
+  imageModal.classList.remove('show');
+
+});
+
+
+// 검은 배경을 클릭하면 닫기
+imageModal.addEventListener('click', (event) => {
+
+  if (event.target === imageModal) {
+
+    imageModal.classList.remove('show');
+
+  }
+
+});
+
+
+// ESC로 닫기
+document.addEventListener('keydown', (event) => {
+
+  if (event.key === 'Escape') {
+
+    imageModal.classList.remove('show');
+
+  }
+
+});  </script>
 
 </body>
 </html>
