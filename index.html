@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="유지민의 개인 소개 페이지">
   <title>유지민 | About Me</title>
+
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
@@ -21,8 +20,14 @@
   --shadow: 0 20px 50px rgba(23, 23, 23, 0.08);
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   color: var(--text);
@@ -30,7 +35,11 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
   line-height: 1.7;
 }
-a { color: inherit; text-decoration: none; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
 .topbar {
   position: sticky;
@@ -44,6 +53,7 @@ a { color: inherit; text-decoration: none; }
   background: rgba(247, 246, 242, .9);
   backdrop-filter: blur(10px);
 }
+
 .logo {
   width: 42px;
   height: 42px;
@@ -55,26 +65,42 @@ a { color: inherit; text-decoration: none; }
   font: 700 15px 'Space Grotesk', sans-serif;
   letter-spacing: .04em;
 }
-nav { display: flex; gap: 24px; font-size: 14px; font-weight: 600; }
-nav a:hover, nav a:focus-visible { color: var(--accent); }
 
-main { overflow: hidden; }
+nav {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  color: var(--accent);
+}
+
+main {
+  overflow: hidden;
+}
+
+/* 첫 화면 */
 .hero {
   min-height: 84vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 96px 10vw;
+  padding: 60px 10vw;
   background:
     radial-gradient(circle at 85% 25%, rgba(220, 236, 229, .9), transparent 24%),
     radial-gradient(circle at 12% 85%, rgba(236, 227, 207, .7), transparent 22%);
 }
+
 .eyebrow {
   margin: 0 0 14px;
   font: 700 12px 'Space Grotesk', sans-serif;
   letter-spacing: .16em;
   color: var(--accent);
 }
+
 h1 {
   margin: 0;
   max-width: 780px;
@@ -82,13 +108,117 @@ h1 {
   line-height: 1.02;
   letter-spacing: -.06em;
 }
-h1 span { color: var(--accent); }
+
+h1 span {
+  color: var(--accent);
+}
+
 .intro {
-  margin: 30px 0 34px;
+  margin: 24px 0 22px;
   max-width: 680px;
   color: var(--muted);
   font-size: clamp(16px, 2vw, 19px);
 }
+
+/* 첫 화면 활동 요약 */
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.hero-highlight {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* 공개 가능한 근거 */
+.hero-evidence {
+  margin-bottom: 22px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.hero-evidence p {
+  margin: 0 0 8px;
+}
+
+/* 근거 이미지 슬라이더 */
+.evidence-slider {
+  position: relative;
+  width: 260px;
+}
+
+.evidence-track {
+  width: 260px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.evidence-slides {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.evidence-image {
+  flex: 0 0 260px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(23, 23, 23, 0.06);
+}
+
+.evidence-image img {
+  display: block;
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+.evidence-image span {
+  display: block;
+  padding: 7px 3px 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* 좌우 버튼 */
+.slider-button {
+  position: absolute;
+  top: 60px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(23, 23, 23, 0.8);
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.slider-button.prev {
+  left: -15px;
+}
+
+.slider-button.next {
+  right: -15px;
+}
+
+.slider-button:hover,
+.slider-button:focus-visible {
+  background: var(--accent);
+}
+
 .button {
   width: fit-content;
   border: 0;
@@ -100,30 +230,45 @@ h1 span { color: var(--accent); }
   cursor: pointer;
   transition: transform .2s ease, background .2s ease;
 }
-.button:hover, .button:focus-visible { transform: translateY(-2px); background: var(--accent); }
 
-.section { padding: 110px 10vw; }
-.soft { background: #efeee9; }
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+  background: var(--accent);
+}
+
+.section {
+  padding: 110px 10vw;
+}
+
+.soft {
+  background: #efeee9;
+}
+
 .section-heading {
   display: flex;
   align-items: baseline;
   gap: 18px;
   margin-bottom: 46px;
 }
+
 .section-heading span {
   font: 700 13px 'Space Grotesk', sans-serif;
   color: var(--accent);
 }
+
 .section-heading h2 {
   margin: 0;
   font-size: clamp(32px, 5vw, 54px);
   letter-spacing: -.05em;
 }
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
+
 .info-card {
   min-height: 250px;
   padding: 30px;
@@ -132,6 +277,7 @@ h1 span { color: var(--accent); }
   border-radius: 24px;
   box-shadow: var(--shadow);
 }
+
 .icon {
   width: 44px;
   height: 44px;
@@ -143,10 +289,22 @@ h1 span { color: var(--accent); }
   color: var(--accent);
   font: 700 12px 'Space Grotesk', sans-serif;
 }
-.info-card h3 { margin: 0 0 10px; font-size: 20px; }
-.info-card p { margin: 0; color: var(--muted); }
 
-.timeline { max-width: 850px; margin-left: 10px; }
+.info-card h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.info-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.timeline {
+  max-width: 850px;
+  margin-left: 10px;
+}
+
 .timeline-item {
   position: relative;
   display: grid;
@@ -154,6 +312,7 @@ h1 span { color: var(--accent); }
   gap: 22px;
   padding: 0 0 44px;
 }
+
 .timeline-item:not(:last-child)::after {
   content: '';
   position: absolute;
@@ -163,6 +322,7 @@ h1 span { color: var(--accent); }
   width: 1px;
   background: var(--line);
 }
+
 .dot {
   width: 17px;
   height: 17px;
@@ -173,16 +333,30 @@ h1 span { color: var(--accent); }
   box-shadow: 0 0 0 1px var(--accent);
   z-index: 1;
 }
+
 .period {
   margin: 0 0 6px;
   font: 700 11px 'Space Grotesk', sans-serif;
   letter-spacing: .14em;
   color: var(--accent);
 }
-.timeline-item h3 { margin: 0 0 7px; font-size: 23px; letter-spacing: -.03em; }
-.timeline-item p:last-child { margin: 0; color: var(--muted); }
 
-.goal-section { padding-top: 90px; padding-bottom: 120px; }
+.timeline-item h3 {
+  margin: 0 0 7px;
+  font-size: 23px;
+  letter-spacing: -.03em;
+}
+
+.timeline-item p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.goal-section {
+  padding-top: 90px;
+  padding-bottom: 120px;
+}
+
 .goal-card {
   max-width: 920px;
   padding: 56px;
@@ -191,18 +365,46 @@ h1 span { color: var(--accent); }
   border-radius: 34px;
   box-shadow: var(--shadow);
 }
-.goal-card .eyebrow { color: #a7d5c5; }
+
+.goal-card .eyebrow {
+  color: #a7d5c5;
+}
+
 .goal-card h2 {
   margin: 0 0 20px;
   font-size: clamp(36px, 6vw, 64px);
   line-height: 1.1;
   letter-spacing: -.05em;
 }
-.goal-card > p:not(.eyebrow):not(.hidden-message) { max-width: 620px; color: #c9c9c2; }
-.button.secondary { background: #fff; color: var(--text); margin-top: 10px; }
-.button.secondary:hover, .button.secondary:focus-visible { background: var(--accent-light); color: var(--text); }
-.hidden-message { display: none; margin: 18px 0 0; color: #a7d5c5; font-weight: 600; }
-.hidden-message.show { display: block; }
+
+.goal-card > p:not(.eyebrow):not(.hidden-message) {
+  max-width: 620px;
+  color: #c9c9c2;
+}
+
+.button.secondary {
+  background: #fff;
+  color: var(--text);
+  margin-top: 10px;
+}
+
+.button.secondary:hover,
+.button.secondary:focus-visible {
+  background: var(--accent-light);
+  color: var(--text);
+}
+
+.hidden-message {
+  display: none;
+  margin: 18px 0 0;
+  color: #a7d5c5;
+  font-weight: 600;
+}
+
+.hidden-message.show {
+  display: block;
+}
+
 footer {
   padding: 28px 10vw 40px;
   color: var(--muted);
@@ -210,22 +412,50 @@ footer {
   font-size: 13px;
 }
 
-:focus-visible { outline: 3px solid #83b8a5; outline-offset: 4px; }
-
-@media (max-width: 760px) {
-  .topbar { padding: 14px 5vw; }
-  nav { gap: 12px; font-size: 12px; }
-  .hero, .section { padding-left: 6vw; padding-right: 6vw; }
-  .hero { min-height: 78vh; padding-top: 72px; }
-  .card-grid { grid-template-columns: 1fr; }
-  .goal-card { padding: 34px 26px; border-radius: 24px; }
+:focus-visible {
+  outline: 3px solid #83b8a5;
+  outline-offset: 4px;
 }
 
+@media (max-width: 760px) {
+  .topbar {
+    padding: 14px 5vw;
+  }
+
+  nav {
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  .hero,
+  .section {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+
+  .hero {
+    min-height: 78vh;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .goal-card {
+    padding: 34px 26px;
+    border-radius: 24px;
+  }
+}
   </style>
 </head>
+
 <body>
+
   <header class="topbar">
     <a class="logo" href="#home">JM</a>
+
     <nav aria-label="주요 메뉴">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
@@ -234,104 +464,335 @@ footer {
   </header>
 
   <main>
+
+    <!-- 첫 화면 -->
     <section id="home" class="hero">
+
       <p class="eyebrow">MY ONE-PAGE INTRODUCTION</p>
-      <h1>안녕하세요,<br><span>유지민</span>입니다.</h1>
+
+      <h1>
+        안녕하세요,<br>
+        <span>유지민</span>입니다.
+      </h1>
+
       <p class="intro">
         새로운 것을 배우고, 직접 해보면서 성장하는 사람입니다.<br>
         현재 SKT ALEPH를 수강하며 IT의 보안에 대해 배우고 있습니다.
       </p>
-      <a class="button" href="#about">저를 알아보기 ↓</a>
+
+      <!-- 활동 요약 -->
+      <div class="hero-highlights" aria-label="나의 강점과 취향">
+        <span class="hero-highlight">관찰력</span>
+        <span class="hero-highlight">실행력</span>
+        <span class="hero-highlight">지식 연결</span>
+      </div>
+
+	<!-- 공개 가능한 근거 -->
+	<div class="hero-evidence">
+  	<p>공개 가능한 근거</p>
+
+  	<div class="evidence-slider">
+
+  <button
+    class="slider-button prev"
+    type="button"
+    aria-label="이전 근거 보기">
+    ‹
+  </button>
+
+  <div class="evidence-track">
+    <div class="evidence-slides">
+
+      <!-- 근거 이미지 1 -->
+      <div class="evidence-image">
+        <img
+          src="evidence.png"
+          alt="방송 디자인 업부 결과물 1">
+        <span>방송 디자인 업부 결과물 1</span>
+      </div>
+
+      <!-- 근거 이미지 2 -->
+      <div class="evidence-image">
+        <img
+          src="evidence2.png"
+          alt="방송 디자인 업부 결과물 2">
+        <span>방송 디자인 업부 결과물 2</span>
+      </div>
+
+      <!-- 근거 이미지 3 -->
+      <div class="evidence-image">
+        <img
+          src="evidence3.png"
+          alt="방송 디자인 업부 결과물 3">
+        <span>방송 디자인 업부 결과물 3</span>
+      </div>
+
+      <!-- 근거 이미지 4 -->
+      <div class="evidence-image">
+        <img
+          src="evidence4.png"
+          alt="방송 디자인 업부 결과물 4">
+        <span>방송 디자인 업부 결과물 4</span>
+      </div>
+
+    </div>
+  </div>
+
+  <button
+    class="slider-button next"
+    type="button"
+    aria-label="다음 근거 보기">
+    ›
+  </button>
+
+</div>
+	</div>
+      	<a class="button" href="#about">저를 알아보기 ↓</a>
+
     </section>
 
+
+    <!-- About Me -->
     <section id="about" class="section">
+
       <div class="section-heading">
         <span>01</span>
         <h2>About Me</h2>
       </div>
+
       <div class="card-grid">
+
         <article class="info-card">
           <div class="icon">PAST</div>
           <h3>방송 디자인</h3>
-          <p>방송에서 내보내는 디자인 제작에 실무 경험을 키웠습니다.</p>
+          <p>
+            방송에서 내보내는 디자인 제작에 실무 경험을 키웠습니다.
+          </p>
         </article>
+
         <article class="info-card">
           <div class="icon">NOW</div>
           <h3>보안 분야 공부</h3>
-          <p>일본 워홀을 다녀오며 IT분야의 관심을 가졌습니다.<br>
-웹 개발을 공부해보며 IT의 보안 분야에도 도전하기 위해 SKT ALEPH 수료를 목표로 하고 있습니다.</p>
+          <p>
+            일본 워홀을 다녀오며 IT분야의 관심을 가졌습니다.<br>
+            웹 개발을 공부해보며 IT의 보안 분야에도 도전하기 위해
+            SKT ALEPH 수료를 목표로 하고 있습니다.
+          </p>
         </article>
+
         <article class="info-card">
           <div class="icon">GOAL</div>
           <h3>일본 IT 분야에 도전하기</h3>
-          <p>기술과 일본어 실력을 함께 키워 일본 IT 분야에서 일할 수 있는 기반을 만들고 싶습니다.</p>
+          <p>
+            기술과 일본어 실력을 함께 키워 일본 IT 분야에서 일할 수 있는
+            기반을 만들고 싶습니다.
+          </p>
         </article>
+
       </div>
+
     </section>
 
+
+    <!-- 강점 / 취향 -->
     <section id="experience" class="section soft">
+
       <div class="section-heading">
         <span>02</span>
-        <h2>지금까지의 공부 경험</h2>
+        <h2>나의 강점 / 취향</h2>
       </div>
+
       <div class="timeline">
+
+        <!-- 강점 01 -->
         <div class="timeline-item">
+
           <div class="dot"></div>
+
           <div>
-            <p class="period">PAST</p>
-            <h3>방송 디자인</h3>
-            <p>방송에서 내보내는 디자인 제작에 실무 경험을 키웠습니다.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="dot"></div>
-          <div>
-            <p class="period">NOW</p>
-            <h3>보안 분야 공부</h3>
-            <p>일본 워홀을 다녀오며 IT분야의 관심을 가졌습니다.<br>
-웹 개발을 공부해보며 IT의 보안 분야에도 도전하기 위해 SKT ALEPH 수료를 목표로 하고 있습니다.</p> 
+
+            <p class="period">강점 01</p>
+
+            <h3>관찰력</h3>
+
+            <strong>상황</strong>
+            <p>
+              선거 방송 첫 방영일이라 선배들이 바쁜 상황에서 업무를 파악해야 했다.
+            </p>
+
+            <strong>행동</strong>
+            <p>
+              직속 선배의 업무를 관찰하며 내가 할 수 있는 일을 판단하고,
+              필요한 일을 확인한 뒤 함께 처리했다. <br>
+              자막 적용 상태와 수정 사항도 수시로 확인했다.
+            </p>
+
+            <strong>결과</strong>
+            <p>
+              자주 사용될 자막 디자인 1개의 미적용을 발견해
+              방송 송출에 지장이 없도록 했다. <br>
+              수정 사항은 체크리스트로 정리해 선배가 다음 업무를
+              진행할 수 있도록 했다.
+            </p>
+
           </div>
 
         </div>
+
+
+        <!-- 강점 02 -->
         <div class="timeline-item">
+
           <div class="dot"></div>
+
           <div>
-            <p class="period">GOAL</p>
-            <h3>일본 IT 분야에 도전하기</h3>
-            <p>기술과 일본어 실력을 함께 키워 일본 IT 분야에서 일할 수 있는 기반을 만들고 싶습니다.</p>
+
+            <p class="period">강점 02</p>
+
+            <h3>실행력</h3>
+
+            <strong>상황</strong>
+            <p>
+              혼자 공부한 일본어를 실제로 사용하기 위해
+              일본 워킹홀리데이에서 현지인과 대화했다.
+            </p>
+
+            <strong>행동</strong>
+            <p>
+              독학한 일본어를 실제 대화에서 사용하고, <br>
+              모르는 표현은 바로 검색하거나 상대방에게 다시 물어보았다.
+            </p>
+
+            <strong>결과</strong>
+            <p>
+              공부한 내용을 실제로 사용하는 것에서 기쁨과 성취감을 느꼈으며, <br>
+              암기할 때 자주 잊었던 단어도 대화에서 사용하면서 더 잘 기억하게 되었다.
+            </p>
+
           </div>
+
         </div>
+
+
+        <!-- 취향 -->
+        <div class="timeline-item">
+
+          <div class="dot"></div>
+
+          <div>
+
+            <p class="period">취향</p>
+
+            <h3>지식 연결</h3>
+
+            <strong>상황</strong>
+            <p>
+              웹 개발 과정에서 Oracle 데이터베이스를 처음 배우며 <br>
+              DB와 Java가 어떻게 연결되는지 이해하기 어려웠다.
+            </p>
+
+            <strong>행동</strong>
+            <p>
+              DBManager라는 Java 파일을 직접 만들고,
+              다른 Java 파일에서 활용하면서 <br>
+              Oracle 데이터베이스와 Java가 연결되는 과정을 확인했다.
+            </p>
+
+            <strong>결과</strong>
+            <p>
+              Java와 DB의 연결 구조를 이해하게 되었고, <br>
+              따로 배운 지식이 서로 연결되어 하나의 구조로 이해되는
+              과정에서 재미를 느꼈다.
+            </p>
+
+          </div>
+
+        </div>
+
       </div>
+
     </section>
 
-   <section id="goal" class="section goal-section">
+
+    <!-- Goal -->
+    <section id="goal" class="section goal-section">
+
       <div class="goal-card">
+
         <p class="eyebrow">MY NEXT STEP</p>
-        <h2>배운 것을<br>직접 결과물로 만들기</h2>
+
+        <h2>
+          배운 것을<br>
+          직접 결과물로 만들기
+        </h2>
+
         <p>
           아직 모든 것을 아는 단계는 아니지만, 모르는 것을 하나씩 배우고
           작은 결과물로 만들어 보는 과정을 쌓아가고 있습니다.
         </p>
-        <button id="messageButton" class="button secondary" type="button">이메일 보기</button>
-        <p id="message" class="hidden-message" role="status" aria-live="polite">yoo6038a@naver.com</p>
+
+        <button
+          id="messageButton"
+          class="button secondary"
+          type="button">
+          이메일 보기
+        </button>
+
+        <p
+          id="message"
+          class="hidden-message"
+          role="status"
+          aria-live="polite">
+          yoo6038a@naver.com
+        </p>
+
       </div>
+
     </section>
+
   </main>
+
 
   <footer>
     <p>© 2026 유지민 · Personal One-Page</p>
   </footer>
 
-  <script>
-const button = document.getElementById('messageButton');
-const message = document.getElementById('message');
 
-button.addEventListener('click', () => {
-  message.classList.toggle('show');
-  button.textContent = message.classList.contains('show') ? '메시지 숨기기' : '이메일 보기';
+  <script>
+    const button = document.getElementById('messageButton');
+    const message = document.getElementById('message');
+
+    button.addEventListener('click', () => {
+      message.classList.toggle('show');
+
+      button.textContent =
+        message.classList.contains('show')
+          ? '메시지 숨기기'
+          : '이메일 보기';
+    });
+
+const slides = document.querySelector('.evidence-slides');
+const prevButton = document.querySelector('.slider-button.prev');
+const nextButton = document.querySelector('.slider-button.next');
+
+let currentSlide = 0;
+const slideCount = document.querySelectorAll('.evidence-image').length;
+
+function updateSlider() {
+  slides.style.transform =
+    `translateX(-${currentSlide * 260}px)`;
+}
+
+nextButton.addEventListener('click', () => {
+  currentSlide = (currentSlide + 1) % slideCount;
+  updateSlider();
 });
 
+prevButton.addEventListener('click', () => {
+  currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+  updateSlider();
+});
   </script>
+
 </body>
 </html>
-
